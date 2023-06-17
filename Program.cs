@@ -1,23 +1,4 @@
-﻿void FillArray(int[] array) //заполнение массива ранодмными числами 
-{
-    Random random = new Random();
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = random.Next(1, 10);
-    }
-}
-
-void PrintArray(int[] array) // вывод массива на экран
-{
-    Console.WriteLine($"Вывод массива");
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write($"{array[i]} ");
-    }
-    Console.Write($" ");
-}
-
-int Input(string text)
+﻿int Input(string text)
 {
     Console.Write(text);
     return Convert.ToInt32(Console.ReadLine());
@@ -122,11 +103,24 @@ void Task52()
     int columns = Input("Введите количество столбцов матрицы: ");
     int[,] matrix = new int[rows, columns];
     FillArrayMatrix(matrix);
+    Console.WriteLine($" ");
+    Console.WriteLine($"Среднее арифметическое столбцов: ");
+
+
+    double avarage = 0;
+    for (int j = 0; j < columns; j++)
+    {
+        //double avarage = 0; // вводим сред. арифм
+        for (int i = 0; i < rows; i++)
+        {
+            avarage = (avarage + matrix[i, j]);
+        }
+        avarage = avarage / columns;
+        Console.Write($" {avarage:F2}\t ");
+
+    }
+    Console.WriteLine($"");
     PrintArrayMatrix(matrix);
-
-
-
-    Console.WriteLine();
 
 }
 
